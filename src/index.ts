@@ -1,9 +1,10 @@
-import { create } from 'domain';
 import express from 'express';
 import { createServer } from 'http';
 import { Server as SocketioServer } from 'socket.io';
 import Game from './game';
 import { GameState } from './models/GameState';
+
+const port = process.env.PORT || 5000;
 
 const app = express();
 const http = createServer(app);
@@ -42,6 +43,6 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(3000, () => {
-    console.log('listening on *:3000');
+http.listen(port, () => {
+    console.log('listening on *:' + port);
 });
