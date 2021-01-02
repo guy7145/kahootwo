@@ -1,7 +1,9 @@
 <script>
+    import {checkNickname, checkRoomId} from "../lib/api/room";
     import SpinnerOverlay from "../components/SpinnerOverlay.svelte";
-    import {checkNickname, checkRoomId} from "../api/room";
     import ErrorFooter from "../components/ErrorFooter.svelte";
+    import {enterLoading} from "../interactions/room";
+    import {waitAtleast} from "../lib/utils";
 
     export let roomId = null;
     let nickname = '';
@@ -10,7 +12,7 @@
     let currentPromise = false;
 
     const handleEnter = async () => {
-        currentPromise = checkRoomId(roomId);
+        currentPromise = waitAtleast(checkRoomId(roomId), 2);
         await currentPromise;
         enteredRoom = true;
     };
@@ -24,9 +26,9 @@
 <style>
     @keyframes background-colors {
         0% { background: #ba9433 }
-        20% { background: #cb4848 }
-        40% { background: #3f69d4 }
-        60% { background: #53c632 }
+        20% { background: #48cbb7 }
+        40% { background: #53c632 }
+        60% { background: #3f69d4 }
         80% { background: #ae2ea8 }
         100% { background: #ba9433 }
     }
@@ -81,7 +83,7 @@
         {/if}
 
         {#await currentPromise}
-            <SpinnerOverlay/>
+            <SpinnerOverlay text={enterLoading}/>
         {:catch error}
             <ErrorFooter errorMsg="asdasd" />
         {/await}

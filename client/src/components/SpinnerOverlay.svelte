@@ -1,5 +1,6 @@
 <script>
     import Spinner from "./Spinner.svelte";
+    export let text;
 </script>
 
 <style>
@@ -28,5 +29,5 @@
 
 <div class="container">
     <Spinner/>
-    <div class="subtitle">Connecting to Kahoot!</div>
+    <div class="subtitle">{text}</div>
 </div>
