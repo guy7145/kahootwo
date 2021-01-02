@@ -15,24 +15,25 @@ const chat: string[] = [];
 app.get('/', (req, res) => {
     res.send('hello world');
 })
+app.get('/verifyroom', (req, res) => {
+    const { room } = req.query as { room: string };
+    res.send(room === '123');
+})
+app.get('/verifyname', (req, res) => {
+    const { name } = req.query as { name: string };
+    if (!name) res.send(false);
+    else res.send(!game.players.map(x => x.name).includes(name));
+})
 
 io.on('connection', (socket) => {
     console.log('a user connected');
 
     socket.on('login', (msg: any) => {
-        const obj = JSON.parse(msg);
-        if (obj.room !== 123) socket.close();
-
-        if (game.players.map(p => p.name).includes(obj.name)) {
-            socket.emit('error', `Name ${obj.name} is taken. Maybe try another name? :).`);
-            socket.close();
-        }
-
         game.playerJoin({ isReady: game.state !== GameState.WaitingForPlayers, name: obj.name, score: 0 })
         io.emit('playerlist', game.players.map(x => x.name));
     });
 
-    socket.on('ready', (msg:any) => {
+    socket.on('ready', (msg: any) => {
 
     })
 
