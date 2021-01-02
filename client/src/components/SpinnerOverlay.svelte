@@ -16,9 +16,17 @@
         justify-content: center;
         align-items: center;
     }
+
+    .subtitle {
+        color: rgb(255, 255, 255);
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin: 1.25rem 0 0;
+        padding: 0 0.5rem;
+    }
 </style>
 
 <div class="container">
     <Spinner/>
-    <div>Connecting to Kahoot!</div>
+    <div class="subtitle">Connecting to Kahoot!</div>
 </div>

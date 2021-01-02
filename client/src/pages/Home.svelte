@@ -8,7 +8,9 @@
     let enterPromise = null;
 
     const handleEnter = async () => {
-        enterPromise = new Promise(resolve => setTimeout(resolve, 3000));
+        enterPromise = new Promise(
+            resolve => setTimeout(resolve, 3000)
+        );
     };
 
     const handleNickname = async () => {
