@@ -17,5 +17,9 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "dev": "webpack-dev-server --content-base public"
+  },
+  "dependencies": {
+    "query-string": "^6.13.8",
+    "svelte-routing": "^1.5.0"
   }
 }
