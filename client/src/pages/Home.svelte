@@ -1,20 +1,22 @@
 <script>
     import SpinnerOverlay from "../components/SpinnerOverlay.svelte";
+    import {checkNickname, checkRoomId} from "../api/room";
+    import ErrorFooter from "../components/ErrorFooter.svelte";
 
-    export let pin = null;
+    export let roomId = null;
     let nickname = '';
 
     let enteredRoom = false;
-    let enterPromise = null;
+    let currentPromise = false;
 
     const handleEnter = async () => {
-        enterPromise = new Promise(
-            resolve => setTimeout(resolve, 3000)
-        );
+        currentPromise = checkRoomId(roomId);
+        await currentPromise;
     };
 
     const handleNickname = async () => {
-
+        currentPromise = checkNickname(roomId, nickname);
+        await currentPromise;
     };
 </script>
 
@@ -70,15 +72,17 @@
     <img class="logo" src="logo.svg" alt="logo" />
     <div class="form">
         {#if !enteredRoom}
-            <input class="pin" placeholder="Game PIN" bind:value={pin}/>
+            <input class="pin" placeholder="Game PIN" bind:value={roomId}/>
             <button class="enter" on:click={() => handleEnter()}>Enter</button>
         {:else}
             <input class="pin" placeholder="Nickname" bind:value={nickname}/>
             <button class="enter" on:click={() => handleNickname()}>OK, go!</button>
         {/if}
 
-        {#await enterPromise}
+        {#await currentPromise}
             <SpinnerOverlay/>
+        {:catch error}
+            <ErrorFooter errorMsg="">
         {/await}
     </div>
 </div>

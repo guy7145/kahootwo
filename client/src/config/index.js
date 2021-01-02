@@ -6,6 +6,8 @@ console.log(`${env} environment`);
 
 export const conf = {
     local,
+    dev: local,
+    development: local,
     prod,
     production: prod,
 }[env];
