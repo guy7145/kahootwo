@@ -82,7 +82,7 @@
         {#await currentPromise}
             <SpinnerOverlay/>
         {:catch error}
-            <ErrorFooter errorMsg="">
+            <ErrorFooter errorMsg="asdasd" />
         {/await}
     </div>
 </div>
