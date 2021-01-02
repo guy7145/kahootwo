@@ -1,5 +1,19 @@
 <script>
+    import SpinnerOverlay from "../components/SpinnerOverlay.svelte";
+
     export let pin = null;
+    let nickname = '';
+
+    let enteredRoom = false;
+    let enterPromise = null;
+
+    const handleEnter = async () => {
+        enterPromise = new Promise(resolve => setTimeout(resolve, 3000));
+    };
+
+    const handleNickname = async () => {
+
+    };
 </script>
 
 <style>
@@ -53,7 +67,16 @@
 <div class="homepage">
     <img class="logo" src="logo.svg" alt="logo" />
     <div class="form">
-        <input class="pin" placeholder="Game PIN" value={pin || ''}/>
-        <button class="enter">Enter</button>
+        {#if !enteredRoom}
+            <input class="pin" placeholder="Game PIN" bind:value={pin}/>
+            <button class="enter" on:click={() => handleEnter()}>Enter</button>
+        {:else}
+            <input class="pin" placeholder="Nickname" bind:value={nickname}/>
+            <button class="enter" on:click={() => handleNickname()}>OK, go!</button>
+        {/if}
+
+        {#await enterPromise}
+            <SpinnerOverlay/>
+        {/await}
     </div>
 </div>
