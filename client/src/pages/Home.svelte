@@ -5,6 +5,8 @@
     import {enterLoading} from "../interactions/room";
     import {waitAtleast} from "../lib/utils";
 
+    const MINIMUM_WAIT_TIME_SECS = 1;
+
     export let roomId = null;
     let nickname = '';
 
@@ -12,13 +14,13 @@
     let currentPromise = false;
 
     const handleEnter = async () => {
-        currentPromise = waitAtleast(checkRoomId(roomId), 2);
+        currentPromise = waitAtleast(checkRoomId(roomId), MINIMUM_WAIT_TIME_SECS);
         await currentPromise;
         enteredRoom = true;
     };
 
     const handleNickname = async () => {
-        currentPromise = checkNickname(roomId, nickname);
+        currentPromise = waitAtleast(checkNickname(roomId, nickname), MINIMUM_WAIT_TIME_SECS);
         await currentPromise;
     };
 </script>

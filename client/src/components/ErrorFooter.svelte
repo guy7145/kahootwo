@@ -1,6 +1,6 @@
 <script>
     export let errorMsg;
-    export let visibilityTimeSeconds = 3;
+    export let visibilityTimeSeconds = 5;
     let hidden = false;
     if(!hidden) {
         setTimeout(() => hidden = true, visibilityTimeSeconds * 1000);
