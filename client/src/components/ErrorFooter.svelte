@@ -4,7 +4,10 @@
 
 <style>
     @keyframes pop-up {
-        from {transform: translateY(100%)}
+        0% {height: 0}
+        25% {}
+        75% {}
+        100% {height: 0}
     }
 
     .footer {
@@ -28,7 +31,7 @@
         z-index: 105;
         animation: 0.2s ease-in-out 0s 1 normal none running pop-up;
         transform: translateY(0px);
-        transition: transform 0.5s ease-in-out 0s;
+        transition: height 0.5s ease-in-out 0s;
         background: rgb(226, 27, 60);
     }
 
@@ -51,7 +54,7 @@
 
 <div class="footer">
     <span class="icon-container">
-        <img class="logo" src="error-icon.svg" alt="logo" />
+        <img src="error.svg" alt="error-icon"/>
     </span>
     <div class="error-msg">{errorMsg}</div>
 </div>

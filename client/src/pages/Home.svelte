@@ -12,6 +12,7 @@
     const handleEnter = async () => {
         currentPromise = checkRoomId(roomId);
         await currentPromise;
+        enteredRoom = true;
     };
 
     const handleNickname = async () => {
