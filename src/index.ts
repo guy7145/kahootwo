@@ -21,25 +21,23 @@ const game: Game = {
 };
 
 const app = express();
-app.use(cors({
-    origin: 'http://localhost:*/'
-}));
+app.use(cors());
 
 const http = createServer(app);
 const io = new SocketioServer(http);
 
-app.use(express.static('public'));
-
-app.get('/verifyroom', (req, res) => {
+app.get('/verify-room', (req, res) => {
     const { room } = req.query as { room: string };
     res.send(room === '123');
 });
 
-app.get('/verifyname', (req, res) => {
+app.get('/verify-name', (req, res) => {
     const { name } = req.query as { name: string };
     if (!name) res.send(false);
     else res.send(!game.players.map(x => x.name).includes(name));
 });
+
+app.use(express.static('public'));
 
 setInterval(() => { io.emit('isalive'); }, 2000);
 
