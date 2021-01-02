@@ -1,4 +1,3 @@
-import { create } from 'domain';
 import express from 'express';
 import { createServer } from 'http';
 import { Server as SocketioServer } from 'socket.io';
@@ -42,6 +41,6 @@ io.on('connection', (socket) => {
     });
 });
 
-http.listen(3000, () => {
-    console.log('listening on *:3000');
+http.listen(80, () => {
+    console.log('listening on *:80');
 });
