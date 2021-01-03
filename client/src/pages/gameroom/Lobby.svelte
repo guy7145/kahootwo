@@ -1,8 +1,14 @@
 <script>
-    import {nickname} from "../../stores/game-store";
+    import {onMount} from 'svelte';
+    import {nickname, game, gameId} from "../../stores/game-store";
+    import Player from "../../lib/api/player";
 
     const title = "Your'e in!";
     const subtitle = "See your nickname on screen?";
+
+    onMount(() => {
+        game.set(new Player($gameId, $nickname))
+    });
 </script>
 
 <style>

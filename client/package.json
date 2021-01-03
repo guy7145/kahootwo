@@ -23,6 +23,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "query-string": "^6.13.8",
+    "socket.io-client": "^3.0.4",
     "svelte-routing": "^1.5.0"
   }
 }

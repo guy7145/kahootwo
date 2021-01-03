@@ -24,7 +24,12 @@ const app = express();
 app.use(cors());
 
 const http = createServer(app);
-const io = new SocketioServer(http);
+const io = new SocketioServer(http, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+});
 
 app.get('/verify-room', (req, res) => {
     const { room } = req.query as { room: string };
