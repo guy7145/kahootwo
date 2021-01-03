@@ -12,10 +12,10 @@ export async function checkRoomId(roomId) {
     return res.data;
 }
 
-export async function checkNickname(roomId, nickname) {
+export async function checkNickname(gameId, nickname) {
     const res = await Axios.get(`${serverAddr}/verify-name`, {
         params: {
-            room: roomId,
+            room: gameId,
             name: nickname,
         },
     });

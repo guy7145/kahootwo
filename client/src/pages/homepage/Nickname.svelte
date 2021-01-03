@@ -1,5 +1,4 @@
 <script>
-    import {navigate} from "svelte-routing";
     import {checkNickname} from "../../lib/api/room";
     import {enterLoading, nicknameTaken, someError} from "../../interactions/room";
     import SpinnerOverlay from "../../components/SpinnerOverlay.svelte";
@@ -7,30 +6,28 @@
     import {waitAtleast} from "../../lib/utils";
     import {MINIMUM_LOADING_TIME_SECS} from "../../lib/consts";
     import './basic-layout.css';
-    import HomeLayout from "./HomeLayout.svelte";
 
-    export const roomId = null;
+    export let gameId, nickname = '', onSuccess;
     let nicknamePromise = null;
-    let nickname = '';
 
     const handleNickname = async () => {
-        nicknamePromise = waitAtleast(checkNickname(roomId, nickname), MINIMUM_LOADING_TIME_SECS);
-        await nicknamePromise;
+        nicknamePromise = waitAtleast(checkNickname(gameId, nickname), MINIMUM_LOADING_TIME_SECS);
+        if (await nicknamePromise) {
+            onSuccess();
+        }
     };
 </script>
 
-<HomeLayout>
-    <input class="pin" placeholder="Nickname" bind:value={nickname}/>
-    <button class="enter" on:click={() => handleNickname()}>OK, go!</button>
-    {#if nicknamePromise}
-        {#await nicknamePromise}
-            <SpinnerOverlay text={enterLoading}/>
-        {:then res}
-            {#if !res}
-                <ErrorFooter errorMsg={nicknameTaken}/>
-            {/if}
-        {:catch error}
-            <ErrorFooter errorMsg={someError}/>
-        {/await}
-    {/if}
-</HomeLayout>
+<input class="pin" placeholder="Nickname" bind:value={nickname}/>
+<button class="enter" on:click={() => handleNickname()}>OK, go!</button>
+{#if nicknamePromise}
+    {#await nicknamePromise}
+        <SpinnerOverlay text={enterLoading}/>
+    {:then res}
+        {#if !res}
+            <ErrorFooter errorMsg={nicknameTaken}/>
+        {/if}
+    {:catch error}
+        <ErrorFooter errorMsg={someError}/>
+    {/await}
+{/if}
