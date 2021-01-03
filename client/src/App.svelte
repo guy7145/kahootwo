@@ -1,7 +1,8 @@
 <script>
-    import { Router, Link, Route } from "svelte-routing";
+    import {Router, Link, Route} from "svelte-routing";
     import queryString from "query-string";
-    import Home from './pages/Home.svelte';
+    import Home from './pages/homepage/GamePin.svelte';
+    import Nickname from "./pages/homepage/Nickname.svelte";
 
     let query = window.location.search;
     let parsed = {};
@@ -17,7 +18,7 @@
 
 <Router url={url}>
     <Route path="/game/:id" let:params>
-        <div>params.id</div>
+        <Nickname gameId="{params.id}"/>
     </Route>
     <Route path="/" let:params>
         <Home pin="{parsed.pin || null}"/>

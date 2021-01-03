@@ -9,8 +9,7 @@ export async function checkRoomId(roomId) {
             room: roomId,
         },
     });
-    console.log(res);
-    return false;
+    return res.data;
 }
 
 export async function checkNickname(roomId, nickname) {
@@ -20,6 +19,5 @@ export async function checkNickname(roomId, nickname) {
             name: nickname,
         },
     });
-    console.log(res);
-    return false;
+    return res.data;
 }

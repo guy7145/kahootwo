@@ -1,0 +1,1 @@
+export const MINIMUM_LOADING_TIME_SECS = 1;
