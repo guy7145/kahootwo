@@ -4,6 +4,7 @@ import {Game} from "./game";
 const PLAYER_MAX_QUIET_TIME = 2 * 1000;
 const PLAYER_TIME_TO_DEATH = 60 * 1000;
 
+
 export class Player {
     private isAliveInterval: any;
     nickname: string;
@@ -42,6 +43,6 @@ export class Player {
     }
 
     notification(msg: string) {
-        this.socket.emit('chat', msg);
+        this.socket.emit('notification', msg);
     }
 }

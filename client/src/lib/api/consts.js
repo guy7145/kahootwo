@@ -9,5 +9,5 @@ export const SOCKET_ACTIONS = {
     QUESTION: 'question',
     END_GAME: 'endgame',
 
-    CHAT: 'chat',
+    NOTIFICATION: 'notification',
 }

@@ -18,7 +18,7 @@ export class Game {
     }
 
     isNicknameTaken(nickname: string) {
-        return !this.players.map(p => p.nickname).includes(nickname);
+        return this.players.map(p => p.nickname).includes(nickname);
     }
 
     addPlayer(player: Player) {
@@ -31,7 +31,7 @@ export class Game {
         }
 
         this.players.push(player);
-        player.notification(`hi! welcome to room ${this.gameId}`)
+        player.notification(`hi ${player.nickname}! welcome to the game`);
     }
 
     answerQuestion() {

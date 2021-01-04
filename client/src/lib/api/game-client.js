@@ -1,4 +1,5 @@
 import { io } from 'socket.io-client';
+import {notifications} from '../../stores/notifications';
 import {conf} from '../../config';
 import {SOCKET_ACTIONS} from "./consts";
 
@@ -13,6 +14,7 @@ export default class GameClient {
             this.socket.open();
             this.sendIsAlive();
         });
+        this.socket.on(SOCKET_ACTIONS.NOTIFICATION, msg => notifications.update(ntfs => [...ntfs, msg]));
     }
 
     signSocket() {
