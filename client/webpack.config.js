@@ -1,6 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
+
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
 
@@ -55,7 +56,18 @@ module.exports = {
 				use:  [
 					'file-loader',
 				],
-			}
+			},
+			{
+				test: /\.s[ac]ss$/i,
+				use: [
+					// Creates `style` nodes from JS strings
+					"style-loader",
+					// Translates CSS into CommonJS
+					"css-loader",
+					// Compiles Sass to CSS
+					"sass-loader",
+				],
+			},
 		]
 	},
 	mode,

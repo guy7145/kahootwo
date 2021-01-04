@@ -1,10 +1,12 @@
 <script>
     import {Route, Router} from "svelte-routing";
-    import { NotificationDisplay, notifier } from '@beyonk/svelte-notifications'
+    import {NotificationDisplay, notifier} from '@beyonk/svelte-notifications'
     import {notifications} from "./stores/notifications";
+    import {glitchy} from "./stores/glitchy";
 
     import Home from "./pages/homepage/Home.svelte";
     import Lobby from "./pages/gameroom/Lobby.svelte";
+    import Glitchy from "./vfx/Glitchy.svelte";
 
     export let url = "";
     $: while ($notifications.length) {
@@ -27,3 +29,7 @@
         <Home/>
     </Route>
 </Router>
+<Glitchy/>
+<label style="position: absolute; top: 0; right: 0">
+    glitchy <input type="checkbox" bind:checked={$glitchy}/>
+</label>
