@@ -31,7 +31,7 @@ export class Player {
             if (quietTime > PLAYER_TIME_TO_DEATH) {
                 this.playerDeath();
             } else if (quietTime > PLAYER_MAX_QUIET_TIME)
-                this.socket.emit('isalive');
+                this.socket.emit('is-alive');
             },
             PLAYER_MAX_QUIET_TIME,
         );
@@ -44,5 +44,13 @@ export class Player {
 
     notification(msg: string) {
         this.socket.emit('notification', msg);
+    }
+
+    glitchingOn() {
+        this.socket.emit('glitch', 'on')
+    }
+
+    glitchingOff() {
+        this.socket.emit('glitch', 'off')
     }
 }

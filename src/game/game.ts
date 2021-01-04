@@ -32,6 +32,14 @@ export class Game {
 
         this.players.push(player);
         player.notification(`hi ${player.nickname}! welcome to the game`);
+        setTimeout(() => {
+            player.glitchingOn();
+            player.notification('started glitchinnnnnn');
+        }, 4000);
+        setTimeout(() => {
+            player.glitchingOff();
+            player.notification('no glitching :(');
+        }, 9000);
     }
 
     answerQuestion() {

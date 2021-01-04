@@ -9,8 +9,10 @@
     import OldTvLines from "./vfx/OldTvLines.svelte";
 
     export let url = "";
+    let notify;
+    $: notify = $glitchy ? notifier.danger : notifier.info;
     $: while ($notifications.length) {
-        notifier.warning($notifications.pop(), 10000) // i'm using 'warning' for it's color
+        notify($notifications.pop(), 5000);
     }
 </script>
 

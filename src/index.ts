@@ -41,7 +41,7 @@ app.get('/verify-name', (req, res) => {
 });
 app.use(express.static('public'));
 
-setInterval(() => { io.emit('isalive'); }, 2000);
+setInterval(() => { io.emit('is-alive'); }, 2000);
 
 io.on('connection', (socket) => {
     socket.on('login', (msg: any) => {

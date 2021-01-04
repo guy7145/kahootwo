@@ -3,11 +3,13 @@ export const SOCKET_ACTIONS = {
     DISCONNECT: 'disconnect',
 
     LOGIN: 'login',
-    IS_ALIVE: 'isalive',
-    PLAYERS_LIST: 'playerlist',
+    IS_ALIVE: 'is-alive',
+    PLAYERS_LIST: 'players-list',
 
     QUESTION: 'question',
-    END_GAME: 'endgame',
+    GAME_START: 'start-game',
+    GAME_END: 'end-game',
 
     NOTIFICATION: 'notification',
+    GLITCH: 'glitch',
 }

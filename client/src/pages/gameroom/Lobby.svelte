@@ -2,6 +2,8 @@
     import {onMount} from 'svelte';
     import {nickname, game, gameId} from "../../stores/game-store";
     import Player from "../../lib/api/player";
+    import Glitchy from "../../vfx/Glitchy.svelte";
+    import {glitchy} from "../../stores/glitchy";
 
     const title = "Your'e in!";
     const subtitle = "See your nickname on screen?";
@@ -24,6 +26,10 @@
         justify-content: center;
         flex: 1 0 auto;
         background: rgb(102, 191, 57);
+    }
+
+    .main.black {
+        background: #13240a;
     }
 
     .footer {
@@ -102,16 +108,16 @@
     }
 </style>
 
-<div class="main">
+<div class="{$glitchy ? 'main black' : 'main'}">
     <div class="title">
-        <p class="text">{title}</p>
-        <p class="shadow">{title}</p>
+        <p class="text"><Glitchy>{title}</Glitchy></p>
+        <p class="shadow"><Glitchy>{title}</Glitchy></p>
     </div>
     <div class="subtitle">
-        <p class="text">{subtitle}</p>
-        <p class="shadow">{subtitle}</p>
+        <p class="text"><Glitchy>{subtitle}</Glitchy></p>
+        <p class="shadow"><Glitchy>{subtitle}</Glitchy></p>
     </div>
     <div class="footer">
-        <div class="nickname">{$nickname}</div>
+        <div class="nickname"><Glitchy>{$nickname}</Glitchy></div>
     </div>
 </div>

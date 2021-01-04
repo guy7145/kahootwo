@@ -30,14 +30,15 @@
 .no-vfx-container, .vfx-container {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .vfx-container {
-  overflow: hidden;
   animation:
-          glitch-1 5.05s ease-out alternate infinite,
-          glitch-2 2s 0.2s ease-in alternate infinite,
+          glitch-1 6.05s 1s ease-out reverse infinite,
+          glitch-1 5.05s ease-out forwards infinite,
+          glitch-1 1.05s 0.166s ease-out alternate infinite,
+          glitch-2 1.5s 0.2s ease-in alternate infinite,
           glitch-3 4s 0.71s steps(5, end) forwards infinite;
 }
 
