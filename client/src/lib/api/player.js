@@ -18,7 +18,7 @@ export default class Player extends GameClient {
 
     login() {
         this.socket.emit(SOCKET_ACTIONS.LOGIN, JSON.stringify({
-            name: this.nickname,
+            nickname: this.nickname,
             gameId: this.gameId,
         }))
     }

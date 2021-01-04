@@ -6,7 +6,7 @@ const serverAddr = conf.server.host;
 export async function checkRoomId(roomId) {
     const res = await Axios.get(`${serverAddr}/verify-room`, {
         params: {
-            room: roomId,
+            gameId: roomId,
         },
     });
     return res.data;
@@ -15,8 +15,8 @@ export async function checkRoomId(roomId) {
 export async function checkNickname(gameId, nickname) {
     const res = await Axios.get(`${serverAddr}/verify-name`, {
         params: {
-            room: gameId,
-            name: nickname,
+            gameId: gameId,
+            nickname: nickname,
         },
     });
     return res.data;
