@@ -22,14 +22,9 @@
   top: 0;
   left: 0;
 
-  background: repeating-linear-gradient(
-                  to bottom,
-                  transparent 0%,
-                  rgba(255, 255, 255, 0.05) .5%,
-                  transparent 1%
-  );
-
-  animation: fudge 7s ease-in-out alternate infinite;
+  animation:
+          fudge 7s ease-in-out alternate infinite,
+          lines 4s linear forwards infinite;
 }
 
 .no-vfx-container, .vfx-container {
@@ -52,6 +47,26 @@
   }
   to {
     transform: translate(0px, 2%);
+  }
+}
+
+@keyframes lines {
+  from {
+    background: repeating-linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    rgba(255, 255, 255, 0.05) .5%,
+                    transparent 1%
+    );
+  }
+  to {
+    background: repeating-linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    rgb(135, 30, 165, 0.25) .25%,
+                    transparent .75%,
+                    transparent 1%
+    );
   }
 }
 
