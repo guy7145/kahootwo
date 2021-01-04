@@ -6,9 +6,11 @@
 
     import './basic-layout.css';
     import logo from '../../assets/logo.svg';
+    import Glitchy from "../../vfx/Glitchy.svelte";
 
 
     let gameIdOK = false;
+
     function startGame() {
         navigate(`/game`);
     }
@@ -16,7 +18,9 @@
 
 <div class="homepage">
     <div class="logo">
-        {@html logo}
+        <Glitchy>
+            {@html logo}
+        </Glitchy>
     </div>
     <div class="form">
         {#if !gameIdOK}

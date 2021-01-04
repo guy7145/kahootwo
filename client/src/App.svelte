@@ -6,7 +6,7 @@
 
     import Home from "./pages/homepage/Home.svelte";
     import Lobby from "./pages/gameroom/Lobby.svelte";
-    import Glitchy from "./vfx/Glitchy.svelte";
+    import OldTvLines from "./vfx/OldTvLines.svelte";
 
     export let url = "";
     $: while ($notifications.length) {
@@ -20,6 +20,7 @@
 <style>
 </style>
 
+
 <NotificationDisplay/>
 <Router url={url}>
     <Route path="/game" let:params>
@@ -29,7 +30,7 @@
         <Home/>
     </Route>
 </Router>
-<Glitchy/>
 <label style="position: absolute; top: 0; right: 0">
     glitchy <input type="checkbox" bind:checked={$glitchy}/>
 </label>
+<OldTvLines/>

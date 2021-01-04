@@ -7,6 +7,7 @@ html, body {
 }
 
 body {
+	background: black;
 	margin: 0;
 	font-size: 0.875rem;
 	color: rgb(51, 51, 51);
