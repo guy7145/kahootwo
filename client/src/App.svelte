@@ -7,6 +7,8 @@
     import Home from "./pages/homepage/Home.svelte";
     import Lobby from "./pages/gameroom/Lobby.svelte";
     import OldTvLines from "./vfx/OldTvLines.svelte";
+    import Music from "./sfx/Music.svelte";
+    import GlitchySwitchSound from "./sfx/GlitchySwitchSound.svelte";
 
     export let url = "";
     let notify;
@@ -23,7 +25,9 @@
 </style>
 
 
+<Music/>
 <NotificationDisplay/>
+<GlitchySwitchSound/>
 <Router url={url}>
     <Route path="/game" let:params>
         <Lobby/>
