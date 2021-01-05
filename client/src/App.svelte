@@ -6,6 +6,7 @@
 
     import Home from "./pages/homepage/Home.svelte";
     import Lobby from "./pages/gameroom/Lobby.svelte";
+    import HostLobby from "./pages/host-lobby/HostLobby.svelte";
     import OldTvLines from "./vfx/OldTvLines.svelte";
     import Music from "./sfx/Music.svelte";
     import GlitchySwitchSound from "./sfx/GlitchySwitchSound.svelte";
@@ -29,10 +30,19 @@
 <NotificationDisplay/>
 <GlitchySwitchSound/>
 <Router url={url}>
-    <Route path="/game" let:params>
+    <Route path="/game" let:params> <!-- Enter game pin -->
         <Lobby/>
     </Route>
-    <Route path="/" let:params>
+    <Route path="/join" let:params> <!-- Nickname entry -->
+        <Home/>
+    </Route>
+    <Route path="/instructions" let:params> <!-- Player Lobby Text -->
+        <Home/>
+    </Route>
+    <Route path="/lobby" let:params> <!-- Host's Lobby -->
+        <HostLobby/>
+    </Route>
+    <Route path="/" let:params> <!-- Game pin entry -->
         <Home/>
     </Route>
 </Router>
