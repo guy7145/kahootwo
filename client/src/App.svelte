@@ -42,7 +42,7 @@
         <Home/>
     </Route>
 </Router>
-<label style="position: absolute; top: 0; right: 0">
+<label style="position: absolute; top: 0; left: 0">
     vfx <input type="checkbox" bind:checked={$glitchy}/>
 </label>
 <OldTvLines/>

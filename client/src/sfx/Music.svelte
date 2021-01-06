@@ -4,7 +4,7 @@
     import {musicOn} from "../stores/sfx";
 
     const normalPath = 'audio/music/answer_60sec.webm';
-    const spookyPath = 'audio/music/answer_60sec-spooky.webm';
+    const spookyPath = 'audio/music/answer_60sec-spooky.mp3';
 
     const getSound = path => new Howl({
         src: path,

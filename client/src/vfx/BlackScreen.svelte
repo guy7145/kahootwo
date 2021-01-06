@@ -3,9 +3,6 @@
     import {musicOn} from "../stores/sfx";
 
     $: musicOn.set(!$blackScreen)
-
-    setTimeout(() => blackScreen.set(true), 6000);
-    setTimeout(() => blackScreen.set(false), 12000);
 </script>
 
 <style>

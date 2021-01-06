@@ -17,7 +17,7 @@
         src: 'audio/sounds/notification-spooky.wav',
         autoplay: false,
         loop: false,
-        volume: 4,
+        volume: 1,
     });
 
     let notify;
@@ -25,9 +25,11 @@
 
 
     $: while ($notifications.length) {
-        const notification = $notifications.pop();
-        notify(notification.msg, notification.duration || DEFAULT_NOTIFICATION_TIME);
-        $glitchy ? soundSpooky.play() : sound.play();
+            window.navigator.vibrate(150);
+
+            const notification = $notifications.pop();
+            notify(notification.msg, notification.duration || DEFAULT_NOTIFICATION_TIME);
+            $glitchy ? soundSpooky.play() : sound.play();
     }
 </script>
 
@@ -35,6 +37,8 @@
     .enhance {
         font-size: 20px;
         font-weight: bolder;
+        margin-bottom: 10px;
+        position: absolute;
     }
 </style>
 
