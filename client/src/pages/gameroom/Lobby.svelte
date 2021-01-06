@@ -5,7 +5,7 @@
     import Glitchy from "../../vfx/Glitchy.svelte";
     import {glitchy} from "../../stores/glitchy";
 
-    const title = "Your'e in!";
+    const title = "You're in!";
     const subtitle = "See your nickname on screen?";
 
     onMount(() => {
