@@ -1,5 +1,5 @@
 <script>
-    import {nickname, gameId} from "../../stores/game-store";
+    import {nickname, gameId} from "../../stores/game";
 </script>
 
 <div>

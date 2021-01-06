@@ -1,6 +1,6 @@
 <script>
     import './vfx.scss';
-    import {glitchy} from '../stores/glitchy';
+    import {glitchy} from '../stores/vfx';
 </script>
 
 {#if $glitchy}

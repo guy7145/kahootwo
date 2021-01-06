@@ -1,2 +1,2 @@
 import { writable } from 'svelte/store';
-export const glitchy = writable(false);
+export const musicOn = writable(true);

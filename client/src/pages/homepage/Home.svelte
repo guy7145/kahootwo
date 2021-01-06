@@ -2,7 +2,7 @@
     import {navigate} from 'svelte-routing';
     import GamePin from "./GamePin.svelte";
     import Nickname from "./Nickname.svelte";
-    import {gameId, nickname} from "../../stores/game-store";
+    import {gameId, nickname} from "../../stores/game";
 
     import './basic-layout.css';
     import logo from '../../assets/logo.svg';

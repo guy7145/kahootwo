@@ -2,7 +2,7 @@ import { io } from 'socket.io-client';
 import {notifications} from '../../stores/notifications';
 import {conf} from '../../config';
 import {SOCKET_ACTIONS} from "./consts";
-import {glitchy} from "../../stores/glitchy";
+import {glitchy} from "../../stores/vfx";
 
 
 export default class GameClient {

@@ -1,6 +1,6 @@
 <script>
     import {Route, Router} from "svelte-routing";
-    import {glitchy} from "./stores/glitchy";
+    import {glitchy} from "./stores/vfx";
 
     import Home from "./pages/homepage/Home.svelte";
     import Lobby from "./pages/gameroom/Lobby.svelte";
@@ -9,6 +9,7 @@
     import Music from "./sfx/Music.svelte";
     import GlitchySwitchSound from "./sfx/GlitchySwitchSound.svelte";
     import Notifications from "./components/Notifications.svelte";
+    import BlackScreen from "./vfx/BlackScreen.svelte";
 
     export let url = "";
 </script>
@@ -23,6 +24,7 @@
 <Music/>
 <Notifications/>
 <GlitchySwitchSound/>
+<BlackScreen/>
 <Router url={url}>
     <Route path="/game" let:params> <!-- Enter game pin -->
         <Lobby/>
@@ -41,6 +43,6 @@
     </Route>
 </Router>
 <label style="position: absolute; top: 0; right: 0">
-    glitchy <input type="checkbox" bind:checked={$glitchy}/>
+    vfx <input type="checkbox" bind:checked={$glitchy}/>
 </label>
 <OldTvLines/>

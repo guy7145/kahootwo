@@ -1,12 +1,9 @@
 <script>
     import { onMount } from "svelte";
-    import { nickname, game, gameId } from "../../stores/game-store";
+    import { nickname, game, gameId } from "../../stores/game";
     import Player from "../../lib/api/player";
     import Glitchy from "../../vfx/Glitchy.svelte";
-    import { glitchy } from "../../stores/glitchy";
-
-    const title = "You're in!";
-    const subtitle = "See your nickname on screen?";
+    import { glitchy } from "../../stores/vfx";
 
     onMount(() => {
         game.set(new Player($gameId, $nickname));
@@ -74,9 +71,6 @@
         justify-content: center;
 
         -webkit-box-align: center;
-        align-items: center;
-        background-color: rgb(255, 255, 255);
-        border-radius: 50%;
         box-shadow: none;
         cursor: pointer;
         display: flex;
@@ -84,11 +78,10 @@
         min-height: unset;
         position: relative;
         transition: all 100ms ease 0s;
-        box-sizing: border-box;
         font-size: 1rem;
         font-weight: bold;
         border: none;
-        outline: 0px !important;
+        outline: 0 !important;
     }
 
     .main {
@@ -107,42 +100,42 @@
 
     @keyframes juibOf {
         0% {
-            transform: translate3d(-5vw, 2vh, 0px) rotate(45deg);
+            transform: translate3d(-5vw, 2vh, 0) rotate(45deg);
         }
         50% {
-            transform: translate3d(0px, 0px, 0px) rotate(45deg);
+            transform: translate3d(0, 0, 0) rotate(45deg);
         }
         100% {
-            transform: translate3d(-5vw, -2vh, 0px) rotate(45deg);
+            transform: translate3d(-5vw, -2vh, 0) rotate(45deg);
         }
     }
 
     @keyframes swZap {
         0% {
-            transform: translate3d(0px, 0px, 0px);
+            transform: translate3d(0, 0, 0);
         }
         50% {
-            transform: translate3d(-5vw, -2vh, 0px);
+            transform: translate3d(-5vw, -2vh, 0);
         }
         100% {
-            transform: translate3d(0px, 0px, 0px);
+            transform: translate3d(0, 0, 0);
         }
     }
 
     .join-text {
         background-color: rgb(255, 255, 255);
         padding: 1.7vmin 2.5vmin 1.7vmin 2.8vmin;
-        border-radius: 0.5vmin 0px 0px 0.5vmin;
+        border-radius: 0.5vmin 0 0 0.5vmin;
         display: flex;
         -webkit-box-align: center;
         align-items: center;
         margin-right: -1vmin;
         clip-path: polygon(
-            calc(100% - 2.5vmin) 0px,
+            calc(100% - 2.5vmin) 0,
             100% 50%,
             calc(100% - 2.5vmin) 100%,
-            0px 100%,
-            0px 0px
+            0 100%,
+            0 0
         );
         flex-direction: column;
         line-height: 3.74vmin;
@@ -159,8 +152,8 @@
         top: 0.2vmin;
         left: 3.3vmin;
         transform: translateY(-100%);
-        padding: 0.5vmin 1vmin 0px;
-        border-radius: 0.5vmin 0.5vmin 0px 0px;
+        padding: 0.5vmin 1vmin 0;
+        border-radius: 0.5vmin 0.5vmin 0 0;
         text-align: left;
     }
 
@@ -174,10 +167,10 @@
         align-items: center;
         height: 100%;
         background-color: rgb(255, 255, 255);
-        border-radius: 0px 0.5vmin 0.5vmin 0px;
-        padding: 0px 2.8vmin 0px 5.3vmin;
+        border-radius: 0 0.5vmin 0.5vmin 0;
+        padding: 0 2.8vmin 0 5.3vmin;
         margin-left: -1vmin;
-        clip-path: polygon(0px 0%, 100% 0px, 100% 100%, 0px 100%, 2.5vmin 50%);
+        clip-path: polygon(0 0%, 100% 0, 100% 100%, 0 100%, 2.5vmin 50%);
     }
 
     .logo {
@@ -215,16 +208,15 @@
     }
 
     button {
-        box-shadow: rgba(0, 0, 0, 0.15) 0px -0.25rem 0px 0px inset;
+        box-shadow: rgba(0, 0, 0, 0.15) 0 -0.25rem 0 0 inset;
         padding-bottom: 0.25rem;
-        padding: 0px;
+        padding: 0;
         border: none;
         width: auto;
         background: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         min-width: 0;
         min-height: 0;
-        height: 40px;
         border-radius: 0.42vmin;
         line-height: normal;
         min-height: 2.5rem;
@@ -233,7 +225,7 @@
 
     .user-list {
         height: auto;
-        padding: 0px 2.5vmin;
+        padding: 0 2.5vmin;
         text-align: left;
         display: flex;
         flex: 0 0 auto;
@@ -241,7 +233,7 @@
         -webkit-box-pack: center;
         justify-content: center;
         z-index: 1;
-        margin: 0px auto;
+        margin: 0 auto;
         width: 80%;
     }
     .user-item {
@@ -398,7 +390,7 @@
                 <div aria-expanded="false">
                     <button
                         type="register"
-                        style="font-size: 1.0437rem; padding: 0px 1rem 0.25rem;">
+                        style="font-size: 1.0437rem; padding: 0 1rem 0.25rem;">
                         Start
                     </button>
                 </div>

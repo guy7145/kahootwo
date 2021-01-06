@@ -1,6 +1,6 @@
 <script>
     import {Howl} from 'howler';
-    import {glitchy} from "../stores/glitchy";
+    import {glitchy} from "../stores/vfx";
 
     const sound = new Howl({
         src: 'audio/sounds/noise-effect.wav',

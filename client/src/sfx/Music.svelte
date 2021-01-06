@@ -1,6 +1,8 @@
 <script>
     import {Howl} from 'howler';
-    import {glitchy} from "../stores/glitchy";
+    import {glitchy} from "../stores/vfx";
+    import {musicOn} from "../stores/sfx";
+
     const normalPath = 'audio/music/answer_60sec.webm';
     const spookyPath = 'audio/music/answer_60sec-spooky.webm';
 
@@ -16,8 +18,6 @@
 
     normalSound.mute(true);
     spookySound.mute(true);
-    normalSound.play();
-    spookySound.play();
 
     $: if ($glitchy) {
         normalSound.mute(true);
@@ -25,6 +25,14 @@
     } else {
         normalSound.mute(false);
         spookySound.mute(true);
+    }
+
+    $: if ($musicOn) {
+        normalSound.play();
+        spookySound.play();
+    } else {
+        normalSound.pause();
+        spookySound.pause();
     }
 </script>
 

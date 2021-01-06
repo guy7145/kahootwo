@@ -2,7 +2,7 @@
     import {Howl} from 'howler';
     import {NotificationDisplay, notifier} from '@beyonk/svelte-notifications'
     import {notifications} from "../stores/notifications";
-    import {glitchy} from "../stores/glitchy";
+    import {glitchy} from "../stores/vfx";
 
     const DEFAULT_NOTIFICATION_TIME = 5000;
 

@@ -1,9 +1,9 @@
 <script>
     import {onMount} from 'svelte';
-    import {nickname, game, gameId} from "../../stores/game-store";
+    import {nickname, game, gameId} from "../../stores/game";
     import Player from "../../lib/api/player";
     import Glitchy from "../../vfx/Glitchy.svelte";
-    import {glitchy} from "../../stores/glitchy";
+    import {glitchy} from "../../stores/vfx";
 
     const title = "You're in!";
     const subtitle = "See your nickname on screen?";
@@ -35,7 +35,7 @@
     .footer {
         position: fixed;
         width: 100%;
-        z-index: 999;
+        z-index: 1;
 
         display: flex;
         flex: 0 1 auto;
