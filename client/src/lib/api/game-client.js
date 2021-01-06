@@ -26,19 +26,19 @@ export default class GameClient {
         this.socket.on(SOCKET_ACTIONS.GLITCH, mode => glitchy.set(mode === 'on'));
     }
 
-    login() {
-        throw new Error('not implemented')
-    }
-
-    signSocket() {
-        throw new Error('not implemented')
-    }
-
     sendIsAlive() {
         this.socket.emit(SOCKET_ACTIONS.IS_ALIVE, 'still alive!')
     }
 
     receiveNotification(notification) {
         notifications.update(ntfs => [...ntfs, notification]);
+    }
+
+    login() {
+        throw new Error('not implemented')
+    }
+
+    signSocket() {
+        throw new Error('not implemented')
     }
 }

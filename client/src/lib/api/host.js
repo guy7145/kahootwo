@@ -1,4 +1,5 @@
 import GameClient from "./game-client";
+import {players} from "../../stores/host";
 
 export default class Host extends GameClient {
     constructor(gameId, secret) {
@@ -14,5 +15,6 @@ export default class Host extends GameClient {
     }
 
     signSocket() {
+        this.socket.on('players-list', list => players.set(list));
     }
 }

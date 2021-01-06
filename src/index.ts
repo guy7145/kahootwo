@@ -4,6 +4,7 @@ import {Server as SocketioServer} from 'socket.io';
 import cors from 'cors';
 import {Game} from "./game/game";
 import {Player} from "./game/player";
+import Host from "./game/host";
 
 
 const port = process.env.PORT || 5000;
@@ -51,22 +52,34 @@ setInterval(() => { io.emit('is-alive'); }, 2000);
 
 io.on('connection', (socket) => {
     socket.on('login', (msg: any) => {
-        const { gameId, nickname } = JSON.parse(msg) as { gameId: string, nickname: string };
-        const game = games.get(gameId);
-        if (!game || game.isNicknameTaken(nickname)) {
-            socket.emit('login', false);
-        } else {
-            game.addPlayer(new Player(socket, nickname, game));
+        try {
+            const { gameId, nickname } = JSON.parse(msg) as { gameId: string, nickname: string };
+            const game = games.get(gameId);
+            if (!game || game.isNicknameTaken(nickname)) {
+                socket.emit('login', false);
+            } else {
+                game.addPlayer(new Player(socket, game, nickname));
+            }
+        } catch (e) {
+            socket.emit('login', e)
         }
     });
 
     socket.on('host-login', (msg: any) => {
-        const { gameId, secret } = JSON.parse(msg) as { gameId: string, secret: string };
-        const game = games.get(gameId);
-        if (!game || GAME_SECRET !== secret) {
-            socket.emit('login', false);
-        } else {
-            // game.addHost(new Host(socket, game));
+        try {
+            const {gameId, secret} = JSON.parse(msg) as { gameId: string, secret: string };
+            const game = games.get(gameId);
+            if (!game || GAME_SECRET !== secret) {
+                console.log(gameId);
+                socket.emit('login', false);
+            } else {
+                console.log('logged');
+                game.setHost(new Host(socket, game));
+                console.log('in');
+            }
+        } catch (e) {
+            console.log(e);
+            socket.emit('host-login', e);
         }
     });
 });

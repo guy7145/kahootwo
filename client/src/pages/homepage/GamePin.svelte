@@ -21,7 +21,7 @@
             const secret = gameId;
             const gameIdFromSecret = await checkHostSecret(gameId);
             if (gameIdFromSecret) {
-                gameId = gameIdFromSecret;
+                gameId = String(gameIdFromSecret);
                 nickname.set(secret);
                 navigate('/host-lobby');
             }

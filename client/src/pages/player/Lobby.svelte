@@ -1,6 +1,5 @@
 <script>
-    import {onMount} from 'svelte';
-    import {nickname, game, gameId} from "../../stores/game";
+    import {game, gameId, nickname} from "../../stores/game";
     import Player from "../../lib/api/player";
     import Glitchy from "../../vfx/Glitchy.svelte";
     import {glitchy} from "../../stores/vfx";
@@ -8,9 +7,9 @@
     const title = "You're in!";
     const subtitle = "See your nickname on screen?";
 
-    onMount(() => {
-        game.set(new Player($gameId, $nickname))
-    });
+    $: if (!$game) {
+        game.set(new Player($gameId, $nickname));
+    }
 </script>
 
 <style>

@@ -1,13 +1,13 @@
 <script>
-    import { onMount } from "svelte";
-    import { nickname, game, gameId } from "../../stores/game";
-    import Glitchy from "../../vfx/Glitchy.svelte";
-    import { glitchy } from "../../stores/vfx";
+    import {game, gameId, nickname} from "../../stores/game";
+    import {glitchy} from "../../stores/vfx";
+    import {players} from "../../stores/host";
     import Host from "../../lib/api/host";
+    import Glitchy from "../../vfx/Glitchy.svelte";
 
-    onMount(() => {
+    $: if (!$game) {
         game.set(new Host($gameId, $nickname));
-    });
+    }
 </script>
 
 <style>
@@ -209,14 +209,11 @@
 
     button {
         box-shadow: rgba(0, 0, 0, 0.15) 0 -0.25rem 0 0 inset;
-        padding-bottom: 0.25rem;
-        padding: 0;
         border: none;
         width: auto;
         background: rgb(255, 255, 255);
         color: rgb(0, 0, 0);
         min-width: 0;
-        min-height: 0;
         border-radius: 0.42vmin;
         line-height: normal;
         min-height: 2.5rem;
@@ -244,7 +241,6 @@
         font-weight: 600;
         text-align: center;
         box-sizing: border-box;
-        display: inline-flex;
         flex: 0 1 auto;
         background-color: rgba(0, 0, 0, 0.2);
         border-radius: 0.4vmin;
@@ -410,18 +406,9 @@
         </div>
 
         <div class="user-list">
-            <div class="user-item">User 1</div>
-            <div class="user-item">User 2</div>
-            <div class="user-item">User 3</div>
-            <div class="user-item">User 4</div>
-            <div class="user-item">User 1</div>
-            <div class="user-item">User 2</div>
-            <div class="user-item">User 3</div>
-            <div class="user-item">User 4</div>
-            <div class="user-item">User 1</div>
-            <div class="user-item">User 2</div>
-            <div class="user-item">User 3</div>
-            <div class="user-item">User 4</div>
+            {#each $players as player (player)}
+                <div class="user-item">{player}</div>
+            {/each}
         </div>
     </div>
 </div>
