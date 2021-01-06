@@ -10,6 +10,7 @@
     import GlitchySwitchSound from "./sfx/GlitchySwitchSound.svelte";
     import Notifications from "./components/Notifications.svelte";
     import BlackScreen from "./vfx/BlackScreen.svelte";
+    import GrayScale from "./vfx/GrayScale.svelte";
 
     export let url = "";
 </script>
@@ -22,9 +23,14 @@
 
 
 <Music/>
-<Notifications/>
 <GlitchySwitchSound/>
+<Notifications/>
 <BlackScreen/>
+<GrayScale/>
+<OldTvLines/>
+<label style="position: absolute; top: 0; left: 0">
+    vfx <input type="checkbox" bind:checked={$glitchy}/>
+</label>
 <Router url={url}>
     <Route path="/game" let:params> <!-- Enter game pin -->
         <Lobby/>
@@ -42,7 +48,3 @@
         <Home/>
     </Route>
 </Router>
-<label style="position: absolute; top: 0; left: 0">
-    vfx <input type="checkbox" bind:checked={$glitchy}/>
-</label>
-<OldTvLines/>
