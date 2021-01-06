@@ -42,8 +42,9 @@ export class Player {
         this.socket.disconnect();
     }
 
-    notification(msg: string) {
-        this.socket.emit('notification', msg);
+    notification(msg: string, duration?: number) {
+        const notification = duration ? {msg, duration} : {msg};
+        this.socket.emit('notification', JSON.stringify(notification));
     }
 
     glitchingOn() {

@@ -1,7 +1,5 @@
 <script>
     import {Route, Router} from "svelte-routing";
-    import {NotificationDisplay, notifier} from '@beyonk/svelte-notifications'
-    import {notifications} from "./stores/notifications";
     import {glitchy} from "./stores/glitchy";
 
     import Home from "./pages/homepage/Home.svelte";
@@ -9,13 +7,9 @@
     import OldTvLines from "./vfx/OldTvLines.svelte";
     import Music from "./sfx/Music.svelte";
     import GlitchySwitchSound from "./sfx/GlitchySwitchSound.svelte";
+    import Notifications from "./components/Notifications.svelte";
 
     export let url = "";
-    let notify;
-    $: notify = $glitchy ? notifier.danger : notifier.info;
-    $: while ($notifications.length) {
-        notify($notifications.pop(), 5000);
-    }
 </script>
 
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -26,7 +20,7 @@
 
 
 <Music/>
-<NotificationDisplay/>
+<Notifications/>
 <GlitchySwitchSound/>
 <Router url={url}>
     <Route path="/game" let:params>

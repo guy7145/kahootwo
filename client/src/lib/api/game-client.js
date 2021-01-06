@@ -15,7 +15,10 @@ export default class GameClient {
             this.sendIsAlive();
         });
         this.socket.on(SOCKET_ACTIONS.IS_ALIVE, () => this.sendIsAlive());
-        this.socket.on(SOCKET_ACTIONS.NOTIFICATION, msg => notifications.update(ntfs => [...ntfs, msg]));
+        this.socket.on(
+            SOCKET_ACTIONS.NOTIFICATION,
+                notification => this.receiveNotification(JSON.parse(notification)),
+        );
         this.socket.on(SOCKET_ACTIONS.GLITCH, mode => glitchy.set(mode === 'on'));
     }
 
@@ -25,5 +28,9 @@ export default class GameClient {
 
     sendIsAlive() {
         this.socket.emit(SOCKET_ACTIONS.IS_ALIVE, 'still alive!')
+    }
+
+    receiveNotification(notification) {
+        notifications.update(ntfs => [...ntfs, notification]);
     }
 }

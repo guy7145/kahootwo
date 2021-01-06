@@ -31,10 +31,10 @@ export class Game {
         }
 
         this.players.push(player);
-        player.notification(`hi ${player.nickname}! welcome to the game`);
+        player.notification(`hi ${player.nickname}! welcome to the game`, 4000);
         setTimeout(() => {
             player.glitchingOn();
-            player.notification('started glitchinnnnnn');
+            setTimeout(() => player.notification('that\'s fun', 10000), 2000);
         }, 4000);
     }
 

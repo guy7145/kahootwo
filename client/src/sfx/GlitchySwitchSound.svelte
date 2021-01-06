@@ -6,7 +6,7 @@
         src: 'audio/sounds/noise-effect.wav',
         autoplay: false,
         loop: false,
-        volume: 0.2,
+        volume: 0.1,
     });
 
     $: if ($glitchy) {
