@@ -264,7 +264,6 @@
 
 <div class={$glitchy ? 'main black' : 'main'}>
     <div class="header">
-        <Glitchy>
             <div
                     class="button"
                     style="width: 65px; border-radius: 16px; position: absolute; top: 2.5vmin; left: 2.5vmin;">
@@ -273,23 +272,20 @@
                         src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiI+CiAgPGRlZnM+CiAgICA8cGF0aCBpZD0ibGFuZ3VhZ2UtYmxhY2stYSIgZD0iTTE1Ljk5OTUsNiBDMTAuNDc3NSw2IDUuOTk5NSwxMC40NzcgNS45OTk1LDE2IEM1Ljk5OTUsMjEuNTIzIDEwLjQ3NzUsMjYgMTUuOTk5NSwyNiBDMjEuNTIyNSwyNiAyNS45OTk1LDIxLjUyMyAyNS45OTk1LDE2IEMyNS45OTk1LDEwLjQ3NyAyMS41MjI1LDYgMTUuOTk5NSw2IE0xOS4xMDI1LDIzLjM3MyBDMTkuNTIxNSwyMi4yNTMgMTkuODYxNSwyMS4xMjggMjAuMDkwNSwyMCBMMjIuOTE3NSwyMCBDMjIuMDQ3NSwyMS40OTggMjAuNzExNSwyMi42OTQgMTkuMTAyNSwyMy4zNzMgTTE1LjI2MjUsMjMuOTYyIEwxNC45Mjg1LDIzLjEyOCBDMTQuNTEyNSwyMi4wODkgMTQuMjAzNSwyMS4wNDQgMTMuOTY4NSwyMCBMMTguMDMxNSwyMCBDMTcuNzk2NSwyMS4wNDQgMTcuNDg3NSwyMi4wODkgMTcuMDcxNSwyMy4xMjggTDE2LjczNzUsMjMuOTYyIEMxNi40OTQ1LDIzLjk4NSAxNi4yNDg1LDI0IDE1Ljk5OTUsMjQgQzE1Ljc1MDUsMjQgMTUuNTA1NSwyMy45ODUgMTUuMjYyNSwyMy45NjIgTTkuMDgyNSwyMCBMMTEuOTA5NSwyMCBDMTIuMTM4NSwyMS4xMjggMTIuNDc4NSwyMi4yNTMgMTIuODk3NSwyMy4zNzMgQzExLjI4ODUsMjIuNjk0IDkuOTUyNSwyMS40OTggOS4wODI1LDIwIE0xMS42MDM1LDE4IEw4LjI2MzUsMTggQzguMDk3NSwxNy4zNTkgNy45OTk1LDE2LjY5MSA3Ljk5OTUsMTYgQzcuOTk5NSwxNS4zMDkgOC4wOTc1LDE0LjY0MSA4LjI2MzUsMTQgTDExLjYwMzUsMTQgQzExLjUzNTUsMTQuNjY4IDExLjQ5OTUsMTUuMzM1IDExLjQ5OTUsMTYgQzExLjQ5OTUsMTYuNjY1IDExLjUzNTUsMTcuMzMyIDExLjYwMzUsMTggTTEyLjg5NzUsOC42MjcgQzEyLjQ3ODUsOS43NDcgMTIuMTM4NSwxMC44NzIgMTEuOTA5NSwxMiBMOS4wODI1LDEyIEM5Ljk1MjUsMTAuNTAyIDExLjI4ODUsOS4zMDYgMTIuODk3NSw4LjYyNyBNMTYuNzM3NSw4LjAzOCBMMTcuMDcxNSw4Ljg3MiBDMTcuNDg3NSw5LjkxMSAxNy43OTY1LDEwLjk1NiAxOC4wMzE1LDEyIEwxMy45Njg1LDEyIEMxNC4yMDM1LDEwLjk1NiAxNC41MTI1LDkuOTExIDE0LjkyODUsOC44NzIgTDE1LjI2MjUsOC4wMzggQzE1LjUwNTUsOC4wMTUgMTUuNzUwNSw4IDE1Ljk5OTUsOCBDMTYuMjQ4NSw4IDE2LjQ5NDUsOC4wMTUgMTYuNzM3NSw4LjAzOCBNMTguMzc2NSwxOCBMMTMuNjIzNSwxOCBDMTMuNTQ3NSwxNy4zMzEgMTMuNDk5NSwxNi42NjQgMTMuNDk5NSwxNiBDMTMuNDk5NSwxNS4zMzYgMTMuNTQ3NSwxNC42NjggMTMuNjIzNSwxNCBMMTguMzc2NSwxNCBDMTguNDUyNSwxNC42NjggMTguNDk5NSwxNS4zMzYgMTguNDk5NSwxNiBDMTguNDk5NSwxNi42NjQgMTguNDUyNSwxNy4zMzEgMTguMzc2NSwxOCBNMjIuOTE3NSwxMiBMMjAuMDkwNSwxMiBDMTkuODYxNSwxMC44NzIgMTkuNTIxNSw5Ljc0NyAxOS4xMDI1LDguNjI3IEMyMC43MTE1LDkuMzA2IDIyLjA0NzUsMTAuNTAyIDIyLjkxNzUsMTIgTTIzLjk5OTUsMTYgQzIzLjk5OTUsMTYuNjkxIDIzLjkwMjUsMTcuMzU5IDIzLjczNjUsMTggTDIwLjM5NTUsMTggQzIwLjQ2NDUsMTcuMzMyIDIwLjQ5OTUsMTYuNjY1IDIwLjQ5OTUsMTYgQzIwLjQ5OTUsMTUuMzM1IDIwLjQ2NDUsMTQuNjY4IDIwLjM5NTUsMTQgTDIzLjczNjUsMTQgQzIzLjkwMjUsMTQuNjQxIDIzLjk5OTUsMTUuMzA5IDIzLjk5OTUsMTYiLz4KICA8L2RlZnM+CiAgPHVzZSBmaWxsPSIjMzMzIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHhsaW5rOmhyZWY9IiNsYW5ndWFnZS1ibGFjay1hIi8+Cjwvc3ZnPgo=" />
                 <div style="width: 32px;">EN</div>
             </div>
-        </Glitchy>
-        <Glitchy>
-            <div
-                    class="button"
-                    style="position: absolute; bottom: 2.5vmin; left: 2.5vmin;">
-                <svg
-                        style="height: 32px;"
-                        id="arrow"
-                        data-functional-selector="icon"
-                        viewBox="0 0 32 32"
-                        focusable="false"
-                        stroke="none"
-                        stroke-width="0"><path
-                        d="M7.085 19.5L15.501 11.086 23.915 19.5 22.5 20.915 15.501 13.915 8.501 20.915z"
-                        style="fill: rgb(51, 51, 51);" /></svg>
-            </div>
-        </Glitchy>
+        <div
+                class="button"
+                style="position: absolute; bottom: 2.5vmin; left: 2.5vmin;">
+            <svg
+                    style="height: 32px;"
+                    id="arrow"
+                    data-functional-selector="icon"
+                    viewBox="0 0 32 32"
+                    focusable="false"
+                    stroke="none"
+                    stroke-width="0"><path
+                    d="M7.085 19.5L15.501 11.086 23.915 19.5 22.5 20.915 15.501 13.915 8.501 20.915z"
+                    style="fill: rgb(51, 51, 51);" /></svg>
+        </div>
         <div class="button-container">
             <Glitchy>
                 <div class="button" style="margin-bottom: 13px;">
@@ -300,9 +296,12 @@
                             viewBox="0 0 32 32"
                             focusable="false"
                             stroke="none"
-                            stroke-width="0"><path
-                            d="M9,17H5V27H15V23H9ZM17,5V9h6v6h4V5Z"
-                            style="fill: rgb(0, 0, 0);" /></svg>
+                            stroke-width="0"
+                    >
+                        <path
+                                d="M9,17H5V27H15V23H9ZM17,5V9h6v6h4V5Z"
+                                style="fill: rgb(0, 0, 0);" />
+                    </svg>
                 </div>
             </Glitchy>
             <Glitchy>
