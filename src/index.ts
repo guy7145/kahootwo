@@ -70,15 +70,11 @@ io.on('connection', (socket) => {
             const {gameId, secret} = JSON.parse(msg) as { gameId: string, secret: string };
             const game = games.get(gameId);
             if (!game || GAME_SECRET !== secret) {
-                console.log(gameId);
                 socket.emit('login', false);
             } else {
-                console.log('logged');
                 game.setHost(new Host(socket, game));
-                console.log('in');
             }
         } catch (e) {
-            console.log(e);
             socket.emit('host-login', e);
         }
     });
