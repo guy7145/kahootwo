@@ -31,4 +31,13 @@
     }
 </script>
 
-<NotificationDisplay/>
+<style>
+    .enhance {
+        font-size: 20px;
+        font-weight: bolder;
+    }
+</style>
+
+<div class="enhance">
+    <NotificationDisplay/>
+</div>
