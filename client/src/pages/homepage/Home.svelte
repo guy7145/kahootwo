@@ -10,10 +10,6 @@
 
 
     let gameIdOK = false;
-
-    function startGame() {
-        navigate(`/game`);
-    }
 </script>
 
 <div class="homepage">
@@ -26,7 +22,7 @@
         {#if !gameIdOK}
             <GamePin bind:gameId={$gameId} onSuccess={() => gameIdOK = true}/>
         {:else}
-            <Nickname bind:nickname={$nickname} gameId={$gameId} onSuccess={startGame}/>
+            <Nickname bind:nickname={$nickname} gameId={$gameId} onSuccess={() => navigate('/lobby')}/>
         {/if}
     </div>
 </div>

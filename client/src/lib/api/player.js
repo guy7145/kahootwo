@@ -9,7 +9,6 @@ export default class Player extends GameClient {
     }
 
     signSocket() {
-        this.socket.on(SOCKET_ACTIONS.CONNECT, () => this.login());
         this.socket.on(SOCKET_ACTIONS.PLAYERS_LIST, console.log);
         this.socket.on(SOCKET_ACTIONS.QUESTION, console.log);
         this.socket.on(SOCKET_ACTIONS.GAME_END, console.log);

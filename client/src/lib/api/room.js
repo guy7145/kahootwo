@@ -3,6 +3,15 @@ import {conf} from '../../config';
 
 const serverAddr = conf.server.host;
 
+export async function checkHostSecret(secret) {
+    const res = await Axios.get(`${serverAddr}/verify-host-secret`, {
+        params: {
+            secret
+        },
+    });
+    return res.data;
+}
+
 export async function checkRoomId(roomId) {
     const res = await Axios.get(`${serverAddr}/verify-room`, {
         params: {

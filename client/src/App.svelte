@@ -3,8 +3,8 @@
     import {glitchy} from "./stores/vfx";
 
     import Home from "./pages/homepage/Home.svelte";
-    import Lobby from "./pages/gameroom/Lobby.svelte";
-    import HostLobby from "./pages/host-lobby/HostLobby.svelte";
+    import Lobby from "./pages/player/Lobby.svelte";
+    import HostLobby from "./pages/host/HostLobby.svelte";
     import OldTvLines from "./vfx/OldTvLines.svelte";
     import Music from "./sfx/Music.svelte";
     import GlitchySwitchSound from "./sfx/GlitchySwitchSound.svelte";
@@ -28,20 +28,14 @@
 <BlackScreen/>
 <GrayScale/>
 <OldTvLines/>
-<label style="position: absolute; top: 0; left: 0">
+<label style="position: absolute; top: 0; left: 0; z-index: 999">
     vfx <input type="checkbox" bind:checked={$glitchy}/>
 </label>
 <Router url={url}>
-    <Route path="/game" let:params> <!-- Enter game pin -->
+    <Route path="/lobby" let:params> <!-- Enter game pin -->
         <Lobby/>
     </Route>
-    <Route path="/join" let:params> <!-- Nickname entry -->
-        <Home/>
-    </Route>
-    <Route path="/instructions" let:params> <!-- Player Lobby Text -->
-        <Home/>
-    </Route>
-    <Route path="/lobby" let:params> <!-- Host's Lobby -->
+    <Route path="/host-lobby" let:params> <!-- Host's Lobby -->
         <HostLobby/>
     </Route>
     <Route path="/" let:params> <!-- Game pin entry -->

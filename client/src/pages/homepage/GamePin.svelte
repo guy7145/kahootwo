@@ -1,11 +1,13 @@
 <script>
-    import {checkRoomId} from "../../lib/api/room";
+    import {navigate} from 'svelte-routing';
+    import {checkHostSecret, checkRoomId} from "../../lib/api/room";
     import {enterLoading, someError, unknownGameId} from "../../interactions/room";
     import SpinnerOverlay from "../../components/SpinnerOverlay.svelte";
     import ErrorFooter from "../../components/ErrorFooter.svelte";
     import {waitAtleast} from "../../lib/utils";
     import {MINIMUM_LOADING_TIME_SECS} from "../../lib/consts";
     import './basic-layout.css';
+    import {nickname} from "../../stores/game";
 
     export let onSuccess;
     export let gameId;
@@ -15,6 +17,14 @@
         enterPromise = waitAtleast(checkRoomId(gameId), MINIMUM_LOADING_TIME_SECS);
         if (await enterPromise) {
             onSuccess(gameId);
+        } else { // this is patchy as hell:
+            const secret = gameId;
+            const gameIdFromSecret = await checkHostSecret(gameId);
+            if (gameIdFromSecret) {
+                gameId = gameIdFromSecret;
+                nickname.set(secret);
+                navigate('/host-lobby');
+            }
         }
     };
 </script>

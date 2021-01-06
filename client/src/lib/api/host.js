@@ -1,7 +1,18 @@
 import GameClient from "./game-client";
 
 export default class Host extends GameClient {
-    constructor() {
-        super();
+    constructor(gameId, secret) {
+        super(gameId);
+        this.secret = secret;
+    }
+
+    login() {
+        this.socket.emit('host-login', JSON.stringify({
+            gameId: this.gameId,
+            secret: this.secret,
+        }))
+    }
+
+    signSocket() {
     }
 }
