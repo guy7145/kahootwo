@@ -5,10 +5,9 @@ import Host from "./host";
 
 export class Game {
     gameId: string;
-    hasBegun: boolean = false;
-    hasFinished: boolean = false;
 
     questions: Question[];
+    currentQuestion: Question | null = null;
     players: Player[];
     host: Host | null = null;
 
@@ -23,17 +22,8 @@ export class Game {
     }
 
     addPlayer(player: Player) {
-        if (this.hasBegun) {
-            throw new Error('game already begun!');
-        }
-
-        if (this.hasFinished) {
-            throw new Error('game already finished!');
-        }
-
         this.players.push(player);
         this.sendPlayersListToHost();
-        player.notification(`hi ${player.nickname}! welcome to the game`, 4000);
     }
 
     delPlayer(nickname: string) {
@@ -42,21 +32,12 @@ export class Game {
     }
 
     setHost(host: Host) {
-        if (this.hasBegun) {
-            throw new Error('game already begun!');
-        }
-
-        if (this.hasFinished) {
-            throw new Error('game already finished!');
-        }
-
         if (this.host) {
             throw new Error('game already has a host');
         }
 
         this.host = host;
         this.sendPlayersListToHost();
-        host.notification(`hi there! please wait for everyone to join and press start`, 10000);
     }
 
     unsetHost() {
@@ -64,7 +45,6 @@ export class Game {
     }
 
     sendPlayersListToHost() {
-        console.log(this.players.map(p => p.nickname));
         this.host?.playersList(this.players.map(p => p.nickname));
     }
 
@@ -72,11 +52,31 @@ export class Game {
 
     }
 
-    start() {
-        this.hasBegun = true;
+    async start() {
+        if (this.currentQuestion) {
+            return;
+        }
+        let i = 0;
+        this.players.forEach(p => p.start());
+        while (i < this.questions.length) {
+            const q = this.questions[i];
+            this.currentQuestion = q;
+            const startTime = Date.now();
+            q.start();
+            this.players.forEach(p => p.question(q, startTime));
+            this.host?.showQuestion(this.currentQuestion, startTime);
+            setTimeout(() => q.end(), q.answerTime + 30 * 1000);
+            await this.currentQuestion.awaitEnd();
+            this.host?.scores(this.players.map(p => ({
+                nickname: p.nickname,
+                score: p.score,
+            })));
+            i++;
+        }
+        this.finish();
     }
 
     private finish() {
-        this.hasFinished = true;
+
     }
 }

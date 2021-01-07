@@ -4,12 +4,14 @@ class QuestionPromise {
 
     constructor() {
         this.resolveFunc = null;
-        this.promise = new Promise<any>(resolve => this.resolveFunc = () => resolve(null));
+        this.promise = new Promise<any>(
+            resolve => this.resolveFunc = () => resolve(null)
+        );
     }
 
     resolve() {
-        if (this.resolve) {
-            this.resolve();
+        if (this.resolveFunc) {
+            this.resolveFunc();
         }
     }
 }
@@ -18,6 +20,8 @@ export class Question {
     questionText: string;
     answers: string[];
     correctAnswerIndex: number;
+    answerTime: number = 60 * 1000;
+    score: number = 100;
 
     startPromise: QuestionPromise;
     endPromise: QuestionPromise;

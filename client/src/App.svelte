@@ -11,6 +11,8 @@
     import Notifications from "./components/Notifications.svelte";
     import BlackScreen from "./vfx/BlackScreen.svelte";
     import GrayScale from "./vfx/GrayScale.svelte";
+    import Host from "./pages/host/Host.svelte";
+    import Player from "./pages/player/Player.svelte";
 
     export let url = "";
 </script>
@@ -32,13 +34,19 @@
     vfx <input type="checkbox" bind:checked={$glitchy}/>
 </label>
 <Router url={url}>
-    <Route path="/lobby" let:params> <!-- Enter game pin -->
+    <Route path="/lobby"> <!-- Lobby -->
         <Lobby/>
     </Route>
-    <Route path="/host-lobby" let:params> <!-- Host's Lobby -->
+    <Route path="/game"> <!-- Player Questions -->
+        <Player/>
+    </Route>
+    <Route path="/host-lobby"> <!-- Host's Lobby -->
         <HostLobby/>
     </Route>
-    <Route path="/" let:params> <!-- Game pin entry -->
+    <Route path="/host-game"> <!-- Host Questions -->
+        <Host/>
+    </Route>
+    <Route path="/"> <!-- Game pin entry -->
         <Home/>
     </Route>
 </Router>

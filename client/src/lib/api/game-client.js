@@ -1,5 +1,5 @@
-import { io } from 'socket.io-client';
-import {notifications} from '../../stores/notifications';
+import {io} from 'socket.io-client';
+import {notify} from '../../stores/notifications';
 import {conf} from '../../config';
 import {SOCKET_ACTIONS} from "./consts";
 import {glitchy} from "../../stores/vfx";
@@ -31,7 +31,7 @@ export default class GameClient {
     }
 
     receiveNotification(notification) {
-        notifications.update(ntfs => [...ntfs, notification]);
+        notify(notification);
     }
 
     login() {

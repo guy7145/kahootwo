@@ -3,6 +3,7 @@
     import Player from "../../lib/api/player";
     import Glitchy from "../../vfx/Glitchy.svelte";
     import {glitchy} from "../../stores/vfx";
+    import {notify} from "../../stores/notifications";
 
     const title = "You're in!";
     const subtitle = "See your nickname on screen?";
@@ -10,6 +11,7 @@
     $: if (!$game) {
         game.set(new Player($gameId, $nickname));
     }
+    notify(`hi ${$nickname}! welcome to the game`, 4000);
 </script>
 
 <style>
